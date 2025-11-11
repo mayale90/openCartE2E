@@ -1,0 +1,78 @@
+plugins {
+    id 'java'
+    id "net.serenity-bdd.serenity-gradle-plugin" version "3.6.7"
+}
+defaultTasks 'clean', 'test', 'aggregate'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven {
+        url "https://repo1.maven.org/maven2"
+    }
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
+}
+
+ext {
+    serenityVersion = '3.7.1'
+    lombokVersion = '1.18.30'
+    junitVersion = '5.10.2'
+}
+
+dependencies {
+
+    //           DEPENDENCIAS JUNIT
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+    testImplementation "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+    //        DEPENDENCIAS CUCUMBER
+    implementation group: 'io.cucumber', name: 'cucumber-java', version: '7.12.0'
+    testImplementation group: 'io.cucumber', name: 'cucumber-junit', version: '7.12.0'
+    testImplementation group: 'io.cucumber', name: 'cucumber-junit-platform-engine', version: '7.12.0'
+    //        DEPENDENCIAS SERENITY
+    testImplementation "net.serenity-bdd:serenity-cucumber:$serenityVersion"
+    testImplementation "net.serenity-bdd:serenity-junit5:$serenityVersion"
+    implementation "net.serenity-bdd:serenity-screenplay-rest:$serenityVersion"
+    implementation "net.serenity-bdd:serenity-core:$serenityVersion"
+    implementation "net.serenity-bdd:serenity-screenplay:${serenityVersion}"
+    //Browser
+    implementation "net.serenity-bdd:serenity-screenplay-webdriver:${serenityVersion}"
+    implementation 'org.seleniumhq.selenium:selenium-java:4.19.1'
+    implementation 'io.github.bonigarcia:webdrivermanager:5.6.2'
+    implementation 'org.seleniumhq.selenium:selenium-firefox-driver:4.19.1'
+    implementation 'org.seleniumhq.selenium:selenium-chrome-driver:4.19.1'
+    // Complementos
+    implementation group: 'com.github.javafaker', name: 'javafaker', version: '1.0.2'
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
+    testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+
+
+    implementation group: 'org.slf4j', name: 'slf4j-reload4j', version: '2.0.7'
+    implementation 'org.apache.logging.log4j:log4j-core:2.20.0'
+    implementation 'org.apache.commons:commons-lang3:3.12.0'
+    // Fillo (Excel)
+    implementation 'com.codoid.products:fillo:1.21'
+}
+
+task cleanReport(type: Delete){
+    delete "${projectDir}/target/site/serenity"
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+test {
+    useJUnit()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+    // Pasa algunas propiedades por defecto para que Serenity las recoja
+    systemProperty 'webdriver.driver', 'chrome'
+    systemProperty 'webdriver.base.url', 'http://localhost'
+}
+
