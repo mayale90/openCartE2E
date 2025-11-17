@@ -6,6 +6,7 @@ import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 import net.thucydides.core.annotations.Step;
 import openCart.actions.RegistraAction;
+import openCart.actions.Scroll;
 import openCart.actions.SeleccionaListaAction;
 import openCart.models.CompraModel;
 import org.slf4j.Logger;
@@ -49,7 +50,11 @@ public class confirmaCompraTask implements Task {
                 RegistraAction.inTargetAndText(INPUT_TELEFONO,compraModel.getTelefono()),
                 RegistraAction.inTargetAndText(INPUT_DIRECCION,compraModel.getDireccion()),
                 RegistraAction.inTargetAndText(INPUT_CIUDAD,compraModel.getCiudad()),
-                RegistraAction.inTargetAndText(INPUT_CODPOSTAL,compraModel.getCodPostal()),
+                RegistraAction.inTargetAndText(INPUT_CODPOSTAL,compraModel.getCodPostal())
+        );
+
+        actor.attemptsTo(
+                Scroll.to(BTN_CONTINUARFORM,30),
                 SeleccionaListaAction.inTargetAndText(SELECT_PAIS,compraModel.getPais()),
                 SeleccionaListaAction.inTargetAndText(SELECT_REGION,compraModel.getRegion()),
                 Click.on(BTN_CONTINUARFORM ),

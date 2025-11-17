@@ -1,0 +1,7 @@
+.gradle
+.idea
+build
+target
+dbconnection.properties
+.vscode/settings.json
+/bin/

@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="Flujo de compra pagina OpenCart" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-11-11T17:13:20" hostname="LAPTOP-PQQD9SMK" time="26.262">
+<testsuite name="Flujo de compra pagina OpenCart" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-11-17T18:33:54" hostname="LAPTOP-PQQD9SMK" time="21.442">
   <properties/>
-  <testcase name="Flujo de compra completo en OpenCart" classname="Flujo de compra pagina OpenCart" time="26.262"/>
+  <testcase name="Flujo de compra completo en OpenCart" classname="Flujo de compra pagina OpenCart" time="21.442"/>
   <system-out><![CDATA[
 @compraOpenCart
 Scenario: Flujo de compra completo en OpenCart                                                    # src/test/resources/features/procesoCompra.feature:4
 data
-[Driver] user-data-dir: C:\Users\mrome\AppData\Local\Temp\ud-1135540528703200-t1-29ddc66d-89ec-44c5-a0cf-5c439436c1d6
-[Driver] disk-cache-dir: C:\Users\mrome\AppData\Local\Temp\cd-1135540528703200-t1-7410648e-117a-47fd-a486-9ae6709a91c6
+[Driver] user-data-dir: C:\Users\mrome\AppData\Local\Temp\ud-1658787458232300-t1-e5c0dcdf-4e67-44b0-ad84-d675380476d0
+[Driver] disk-cache-dir: C:\Users\mrome\AppData\Local\Temp\cd-1658787458232300-t1-f57726ca-d2d9-4bfd-986a-909d0e25200a
   Given El usuario abre la pÃ¡gina openCart con los datos de prueba "openCartCompra" y el caso "1" # openCart.steps.procesoCompraSteps.abrirPaginaOpenCart(java.lang.String,java.lang.String,java.util.List<java.util.Map<java.lang.String, java.lang.Object>>)
     | data |
     | data |
   When realiza la compra de dos productos y realiza checkout con la informacion requerida         # openCart.steps.procesoCompraSteps.realizaCompraProductos()
   Then Deberia ver el mensaje de confirmacion de la compra exitosa                                # openCart.steps.procesoCompraSteps.confirmaCompra()
 ]]></system-out>
-  <system-err><![CDATA[nov. 11, 2025 12:13:23 P. M. org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+  <system-err><![CDATA[nov. 17, 2025 1:33:56 P. M. org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find CDP implementation matching 142
-nov. 11, 2025 12:13:23 P. M. org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
-WARNING: Unable to find version of CDP to use for 142.0.7444.60. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.1` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+nov. 17, 2025 1:33:56 P. M. org.openqa.selenium.chromium.ChromiumDriver lambda$new$5
+WARNING: Unable to find version of CDP to use for 142.0.7444.163. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.19.1` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
 ]]></system-err>
 </testsuite>
